@@ -21,7 +21,7 @@ resource "proxmox_lxc" "lxc" {
         bridge = var.net_env[var.env] # management vmbr10 prod vmbr90 iot  vmbr99 lab
         ip = "dhcp"
     }
-    ostemplate = "cephfs:vztmpl/alpine-3.15-default_20211202_amd64.tar.xz"
+    ostemplate = "cephfs:vztmpl/${var.template[var.distro]}"
     password = "rootroot"
     target_node = "pve4"
     # size 8G ?
