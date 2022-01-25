@@ -18,7 +18,7 @@ provider "proxmox" {
 
 module "prox-lxc-graylog" {
     source = "./modules/proxmox_lxc"
-
+    distro = "ubu20"
     ssh_public_keys = var.ssh_key
     env = "prod"
     lxc_name = "graylog-todel"
@@ -26,7 +26,7 @@ module "prox-lxc-graylog" {
 
 module "prox-lxc-client" {
     source = "./modules/proxmox_lxc"
-
+    distro = "alpine"
     env = "lab"
     lxc_name = "client-todel"
 }

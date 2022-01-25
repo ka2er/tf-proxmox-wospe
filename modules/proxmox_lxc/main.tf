@@ -15,7 +15,7 @@ resource "proxmox_lxc" "lxc" {
 #            mount   = "nfs;cifs"
 
     }
-    hostname = "lxc-${var.env}-${var.lxc_name}"
+    hostname = "lxc-${var.env}-${var.distro}-${var.lxc_name}"
     network {
         name = "eth0"
         bridge = var.net_env[var.env] # management vmbr10 prod vmbr90 iot  vmbr99 lab
