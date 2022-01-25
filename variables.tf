@@ -30,4 +30,11 @@ variable "api" {
   description = "Proxmix API endpoint"
 }
 
+variable "ssh_key" {
+  type = string
+  default = ""
+  description = "ADM ssh keys"
+}
+
+
 

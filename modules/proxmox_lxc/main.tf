@@ -40,8 +40,8 @@ resource "proxmox_lxc" "lxc" {
     unprivileged = true
 
     #ssh-key
-
-    #ssh_public_keys = <<-EOT
+    
+    ssh_public_keys = var.ssh_public_keys
     #ssh-rsa <public_key_1> user@example.com
     #ssh-ed25519 <public_key_2> user@example.com
   #EOT

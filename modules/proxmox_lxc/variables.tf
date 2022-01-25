@@ -25,3 +25,10 @@ variable "net_env" {
     "mngt" = "vmbr0"
   }
 }
+
+variable "ssh_public_keys" {
+  type = string
+  default = ""
+  description = "lxc public key"
+}
+

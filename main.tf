@@ -19,6 +19,7 @@ provider "proxmox" {
 module "prox-lxc-graylog" {
     source = "./modules/proxmox_lxc"
 
+    ssh_public_keys = var.ssh_key
     env = "prod"
     lxc_name = "graylog-todel"
 }
