@@ -1,0 +1,3 @@
+- vanilla LXC clean
+- post deploy install - ansible
++ env : vmbr
