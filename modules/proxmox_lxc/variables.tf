@@ -9,6 +9,12 @@ variable "lxc_name" {
   description = "Proxmox LXC instance name"
 }
 
+variable "playbook" {
+  type = string
+  description = "Ansible playbook"
+  default = ""
+}
+
 variable "env" {
   type = string
   description = "Proxmox LXC environnement (prod|lab|iot|mngt)"
@@ -21,7 +27,6 @@ variable "distro" {
   default = "ubu20"
 }
 
-
 variable "template" {
   type = map
   description = "LXC template"
@@ -29,6 +34,16 @@ variable "template" {
     "alpine"  = "alpine-3.15-default_20211202_amd64.tar.xz"
     "ubu20" = "ubuntu-20.04-standard_20.04-1_amd64.tar.gz"
     "deb11" = "debian-11-standard_11.0-1_amd64.tar.gz"
+  }
+}
+
+variable "user" {
+  type = map
+  description = "LXC user"
+  default = {
+    "alpine"  = "root"
+    "ubu20" = "ubuntu"
+    "deb11" = "root"
   }
 }
 
@@ -48,4 +63,3 @@ variable "ssh_public_keys" {
   default = ""
   description = "lxc public key"
 }
-
