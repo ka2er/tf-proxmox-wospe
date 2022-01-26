@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+  - name: update package list and add gpg
+    ansible.builtin.package:
+      name:
+        - gpg
+      state: latest
