@@ -29,7 +29,7 @@ echo $IP > $virt-$id.inventory
 ansible-galaxy install graylog2.graylog
 
 # update package nodes
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i -i $virt-$id.inventory -u $user update.yml
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i $virt-$id.inventory -u $user update.yml
 #ANSIBLE_HOST_KEY_CHECKING=False ansible all -i $user@$IP, -m ansible.builtin.package -a "update_cache=true"
 
 # deploy
