@@ -15,6 +15,16 @@ provider "proxmox" {
   pm_api_token_secret = var.secret
   pm_debug = true
 }
+
+module "prox-vm-ha" {
+    source = "./modules/proxmox_vm"
+    #distro = "ubu20"
+    ssh_public_keys = var.ssh_key
+    env = "lab"
+    vm_name = "ha-todel"
+    playbook = "ha.yml"
+}
+
 /*
 module "prox-lxc-graylog" {
     source = "./modules/proxmox_lxc"
@@ -24,7 +34,7 @@ module "prox-lxc-graylog" {
     lxc_name = "graylog-todel"
     playbook = "graylog.yml"
 }
-*/
+
 module "prox-lxc-graylog-deb" {
     source = "./modules/proxmox_lxc"
     distro = "ubu20"
