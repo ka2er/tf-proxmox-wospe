@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ATTR{idProduct}=="2838", ATTR{idVendor}=="0bda" , SYMLINK+="rtl-sdr"
