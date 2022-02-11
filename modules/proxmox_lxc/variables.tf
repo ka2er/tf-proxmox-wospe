@@ -9,6 +9,18 @@ variable "lxc_name" {
   description = "Proxmox LXC instance name"
 }
 
+variable "playbook" {
+  type = string
+  description = "Ansible playbook"
+  default = ""
+}
+
+variable "target_node" {
+  type = string
+  description = "Proxmox LXC host (pve|pve2|pve4)"
+  default = "pve4"
+}
+
 variable "env" {
   type = string
   description = "Proxmox LXC environnement (prod|lab|iot|mngt)"

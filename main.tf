@@ -16,6 +16,17 @@ provider "proxmox" {
   pm_debug = true
 }
 
+module "prox-lxc-rtl-433" {
+    source = "./modules/proxmox_lxc"
+    distro = "deb11"
+    ssh_public_keys = var.ssh_key
+    env = "iot"
+    lxc_name = "rtl-433"
+    playbook = "rtl-433.yml"
+    target_node = "pve"
+}
+
+/*
 module "prox-lxc-graylog" {
     source = "./modules/proxmox_lxc"
     distro = "ubu20"
@@ -30,4 +41,4 @@ module "prox-lxc-client" {
     env = "lab"
     lxc_name = "client-todel"
 }
-
+*/
