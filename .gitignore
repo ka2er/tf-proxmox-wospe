@@ -27,3 +27,4 @@ override.tf.json
 # !example_override.tf
 .terraform.lock.hcl
 *.swp
+*.inventory

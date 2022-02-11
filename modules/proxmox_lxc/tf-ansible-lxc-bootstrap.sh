@@ -25,6 +25,7 @@ echo "Guessing IP...$IP"
 ##TODO user centos|ubu|root
 
 cat <<EO_INVENTORY > $virt-$id.inventory
+[lxc]
 $IP ansible_user=$user
 
 [host]
@@ -39,4 +40,5 @@ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i $virt-$id.inventory -u $user
 #ANSIBLE_HOST_KEY_CHECKING=False ansible all -i $user@$IP, -m ansible.builtin.package -a "update_cache=true"
 
 # deploy
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i $virt-$id.inventory -u $user $playbook --extravars lxc_id=$id
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i $virt-$id.inventory -l lxc -u $user $playbook.yml --extra-vars lxc_id=$id
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i $virt-$id.inventory -l host -u $user $playbook-host.yml --extra-vars lxc_id=$id

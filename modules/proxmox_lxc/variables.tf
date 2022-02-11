@@ -33,7 +33,6 @@ variable "distro" {
   default = "ubu20"
 }
 
-
 variable "template" {
   type = map
   description = "LXC template"
@@ -41,6 +40,16 @@ variable "template" {
     "alpine"  = "alpine-3.15-default_20211202_amd64.tar.xz"
     "ubu20" = "ubuntu-20.04-standard_20.04-1_amd64.tar.gz"
     "deb11" = "debian-11-standard_11.0-1_amd64.tar.gz"
+  }
+}
+
+variable "user" {
+  type = map
+  description = "LXC default user"
+  default = {
+    "alpine"  = "root"
+    "ubu20" = "root"
+    "deb11" = "root"
   }
 }
 

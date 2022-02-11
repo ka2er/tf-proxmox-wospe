@@ -49,6 +49,7 @@ resource "proxmox_lxc" "lxc" {
   # pve4/lxc/128 => 128 
   #lxc_id = split("/", self.id)[2]
   provisioner "local-exec" {
+    
     command = "${path.module}/tf-ansible-lxc-bootstrap.sh ${self.id} ${var.playbook} ${var.user[var.distro]} ${self.target_node}"
   }
 }

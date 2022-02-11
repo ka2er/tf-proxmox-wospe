@@ -22,7 +22,7 @@ module "prox-lxc-rtl-433" {
     ssh_public_keys = var.ssh_key
     env = "iot"
     lxc_name = "rtl-433"
-    playbook = "rtl-433.yml"
+    playbook = "rtl-433"
     target_node = "pve"
 }
 

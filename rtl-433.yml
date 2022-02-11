@@ -1,0 +1,7 @@
+- hosts: "all"
+  tasks:
+  - name : Add RTL 433
+    apt:
+      name: rtl-433
+      state: present
+
