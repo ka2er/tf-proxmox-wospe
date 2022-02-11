@@ -33,6 +33,13 @@ variable "distro" {
   default = "ubu20"
 }
 
+variable "unprivileged" {
+  type = bool
+  description = "Is container is unprivileged"
+  default = true
+}
+
+
 variable "template" {
   type = map
   description = "LXC template"
