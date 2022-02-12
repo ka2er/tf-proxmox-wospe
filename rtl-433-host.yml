@@ -12,19 +12,19 @@
       cmd: udevadm control --reload-rules && udevadm trigger
       creates: /dev/rtl-sdr
 
-  - name : find grep char...
+  - name : Gather rtl_sdr major and minor char device values
     shell: "ls -lH /dev/rtl-sdr | cut -d' ' -f 5,6|sed 's/, /:/'"
     register: rtl_sdr_maj_min
     
-  - name : debug   
-    debug: 
-      var: rtl_sdr_maj_min
+  - name : Gather rtl_sdr usb target
+    shell: "ls -l /dev/rtl-sdr |cut -d' ' -f11"
+    register: rtl_sdr_target
 
   - name: tweak lxc cgroup to allow device into {{lxc_id}}
     lineinfile:
       path: "/etc/pve/lxc/{{lxc_id}}.conf"
       state: present
-      line: "lxc.cgroup.devices.allow: c {{rtl_sdr_maj_min.stdout}} rwm"
+      line: "lxc.cgroup2.devices.allow: c {{rtl_sdr_maj_min.stdout}} rwm"
 
   - name: tweak lxc to mount rtl-sdr device into {{lxc_id}}
     lineinfile:
@@ -32,9 +32,11 @@
       state: present
       line: "lxc.mount.entry: /dev/rtl-sdr dev/rtl-sdr none bind,optional,create=file"
 
+  - name: tweak lxc to mount rtl-sdr device into {{lxc_id}}
+    lineinfile:
+      path: "/etc/pve/lxc/{{lxc_id}}.conf"
+      state: present
+      line: "lxc.mount.entry: /dev/{{rtl_sdr_target.stdout}} {{rtl_sdr_target.stdout}} none bind,optional,create=file"
+
   - name: Restart lxc {{lxc_id}}
     command: pct reboot {{lxc_id}}
-
-
-#--- name : ad lxc config option
-# - name : config file to lxc containers or start comman
