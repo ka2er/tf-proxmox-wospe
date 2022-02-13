@@ -1,3 +1,4 @@
 - vanilla LXC clean
 + post deploy install - ansible
 + env : vmbr
+- add variable to set mqtt target/influxdb target from main tf to rtl433 ansible recipe

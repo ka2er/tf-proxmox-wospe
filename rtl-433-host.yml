@@ -36,7 +36,7 @@
     lineinfile:
       path: "/etc/pve/lxc/{{lxc_id}}.conf"
       state: present
-      line: "lxc.mount.entry: /dev/{{rtl_sdr_target.stdout}} {{rtl_sdr_target.stdout}} none bind,optional,create=file"
+      line: "lxc.mount.entry: /dev/{{rtl_sdr_target.stdout}} dev/{{rtl_sdr_target.stdout}} none bind,optional,create=file"
 
   - name: Restart lxc {{lxc_id}}
     command: pct reboot {{lxc_id}}
