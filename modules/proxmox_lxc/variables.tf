@@ -33,6 +33,25 @@ variable "distro" {
   default = "ubu20"
 }
 
+variable "cpu_core" {
+  type = number
+  description = "LXC number of cpu core (default 2)"
+  default = 2
+}
+
+variable "memory" {
+  type = number
+  description = "LXC memory size (default 2048)"
+  default = 2048
+}
+
+
+variable "disk_size" {
+  type = string
+  description = "LXC disk size (default 8G)"
+  default = "8G"
+}
+
 variable "unprivileged" {
   type = bool
   description = "Is container is unprivileged"

@@ -24,6 +24,9 @@ module "prox-lxc-rtl-433" {
     lxc_name = "rtl-433"
     playbook = "rtl-433"
     target_node = "pve"
+    disk_size = "1.5G"
+    cpu_core = 1
+    memory = 512
 }
 
 /*

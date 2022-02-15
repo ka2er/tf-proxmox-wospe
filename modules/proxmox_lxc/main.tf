@@ -24,14 +24,14 @@ resource "proxmox_lxc" "lxc" {
   password = "rootroot"
   target_node = var.target_node
   # size 8G ?
-  cores = 2
-  memory = "2048"
+  cores = var.cpu_core
+  memory = var.memory
   #description
 
   rootfs {
     storage = "ceph_block_ssd"
     #storage = "local-zfs"
-    size    = "8G"
+    size    = var.disk_size
   }
 
   unprivileged = var.unprivileged
