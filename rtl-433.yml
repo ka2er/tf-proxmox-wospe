@@ -5,10 +5,21 @@
       name: rtl-433
       state: present
 
+  - name : Create rtl_sdr start script
+    copy:
+      src: files/run_rtl_433.sh
+      dest: "/root/run_rtl_433.sh"
+      owner: root
+      mode: 0755
 
   - name : launch rtl_433 at boot
     cron:
       name: "launch rtl_433 at boot"
       special_time: reboot
-      job: 'rtl_433 -C si -F "influx://192.168.10.169:8086/write?db=rtl&p=rtl&u=rtl" -F "mqtt://192.168.10.169:1883,user=rtl,pass=rtl"'
+      job: "/root/run_rtl_433.sh"
       
+  - name : check every 5 min that rtl_433 is alive
+    cron:
+      name: "relaunch rtl_433 every 5 min"
+      minute : "*/5"
+      job: "/root/run_rtl_433.sh"
